@@ -1,10 +1,12 @@
 # Meteor SMD
 
-This is a similar in some ways to [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) except it is highly simplified to work in a synchronous environment -- i.e. one whose JS files are concatenated together.
+This library is similar in some ways to [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) except it is highly simplified to work in a synchronous environment -- i.e. one whose JS files are concatenated together.
 
 This allows a developer using the [Meteor](http://www.meteor.com/) framework to define modules and their dependencies without relying on a [specific folder structure](http://docs.meteor.com/#structuringyourapp).
 
 ## How to use
+
+I suggest placing this file in a `lib/` folder at the root of your Meteor project. With this SMD pattern in place throughout your Meteor application, you should avoid using the `lib` folder anywhere else, as this will have the side-effect of loading those files before the meteor-smd.js file.
 
 `define` is similar to the AMD version:
 
