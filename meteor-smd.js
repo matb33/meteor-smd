@@ -37,10 +37,6 @@
 			name = "_anonymous_" + (counter++);
 		}
 
-		if (ns[name]) {
-			throw new Error("Module already defined with name: " + name);
-		}
-
 		if (!resolved[name]) {
 			if (deps) {
 				// There are dependencies, run func if they are all resolved,
@@ -104,6 +100,10 @@
 	self.define = function (/* name, func/other || name, deps_array, func */) {
 		var args = parseArgs(Array.prototype.slice.call(arguments));
 		var name = args.name, func = args.func, other = args.other, deps = args.deps;
+
+		if (modules[name]) {
+			throw new Error("Module already defined with name: " + name);
+		}
 
 		return exec.call(this, name, func, other, deps, modules);
 	};
