@@ -49,14 +49,12 @@ define("Collections", function (Collections) {
 ### prefs.js
 ```
 define("Prefs", ["Env"], function (Env) {
-
 	var Prefs = {};
 
 	Prefs.twitterPublicKey = Env.isDevelopment ? "1234567" : "8901234";
 	Prefs.twitterHandle = "matb33";
 
 	return Prefs;
-
 });
 ```
 
