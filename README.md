@@ -6,7 +6,7 @@ This allows a developer using the [Meteor](http://www.meteor.com/) framework to 
 
 ## How to use
 
-I suggest placing this file in a `lib/` folder at the root of your Meteor project. With this SMD pattern in place throughout your Meteor application, you should avoid using the `lib` folder anywhere else, as this will have the side-effect of loading those files before the meteor-smd.js file.
+I suggest placing this file in a `lib/` folder at the root of your Meteor project. With this SMD pattern in place throughout your Meteor application, you should avoid using the `lib` folder anywhere else, as this will have the side-effect of loading those files before the `meteor-smd.js` file.
 
 `define` is similar to the AMD version:
 
@@ -18,7 +18,7 @@ or
 define(name, array_of_dependencies, function)
 ```
 
-Meanwhile, `using` is a way to "use" one of these defined modules (similar to `require`).
+Meanwhile, `using` is a way to "use" one of these defined modules (similar to `require` except that it uses a callback).
 
 ```
 using(array_of_dependencies, function)
@@ -26,7 +26,7 @@ using(array_of_dependencies, function)
 
 *Note that for `using`, the dependencies don't have to be in an array. They can be listed as function arguments.*
 
-## Example usage
+## Examples
 
 ### people.js
 ```
@@ -39,7 +39,7 @@ using("Collections", function (Collections) {
 
 ### collections.js
 ```
-define("Collections", function (Collections) {
+define("Collections", function () {
 	return {
 		People: new Meteor.Collection("people")
 	};
