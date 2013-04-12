@@ -6,7 +6,7 @@ This allows a developer using the [Meteor](http://www.meteor.com/) framework to 
 
 ## How to use
 
-I suggest placing this file in a `lib/` folder at the root of your Meteor project. With this SMD pattern in place throughout your Meteor application, you should avoid using the `lib` folder anywhere else, as this will have the side-effect of loading those files before the `meteor-smd.js` file.
+Place both `meteor-smd.js` and `package.js` in your local smart packages: `packages/meteor-smd/`.
 
 `define` is similar to the AMD version:
 
