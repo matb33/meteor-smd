@@ -6,7 +6,7 @@ This allows a developer using the [Meteor](http://www.meteor.com/) framework to 
 
 ## How to use
 
-Place both `meteor-smd.js` and `package.js` in your local smart packages: `packages/meteor-smd/`.
+Place both `meteor-smd.js`, `package.js` and `tests.js` in your local smart packages: `packages/meteor-smd/`.
 
 `define` is similar to the AMD version:
 
@@ -80,3 +80,35 @@ define("Env", function () {
 	return Env;
 });
 ```
+
+On a personal note, I use this technique only in very specific use cases where load order is important and a local smart package isn't the right approach. For example, defining Template helpers to be re-used in various other templates:
+
+```
+define("GeneralHelpers", function () {
+	return {
+		createdAtFormatted: function () {
+			return this.createdAt && new Date(this.createdAt).toUTCString();
+		}
+	};
+});
+```
+
+```
+Template.itemEditForm.something = function () {
+	...
+};
+
+using("GeneralHelpers", function (GeneralHelpers) {
+	Template.itemEditForm.createdAt = GeneralHelpers.createdAtFormatted;
+});
+```
+
+## Running the tests
+
+Once the Meteor SMD files are in your local `packages/meteor-smd/`, run the following from the root of your project (make sure Meteor isn't already running):
+
+```
+meteor test-packages meteor-smd
+```
+
+Then, open your browser to `http://localhost:3000` to see the test results.
