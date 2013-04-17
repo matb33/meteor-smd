@@ -81,7 +81,7 @@ define("Env", function () {
 });
 ```
 
-On a personal note, I use this technique only in very specific use cases where load order is important and a local smart package isn't the right approach. For example, defining Template helpers to be re-used in various other templates:
+On a personal note, I use the SMD technique only in very specific use cases where load order is important and both `Meteor.startup` and local smart packages aren't the right approaches. For example, defining Template helpers to be re-used in various other templates:
 
 ```
 define("GeneralHelpers", function () {
